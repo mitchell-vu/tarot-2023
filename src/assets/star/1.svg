@@ -1,0 +1,8 @@
+<svg fill="none" viewBox="0 0 224 105" height="105" width="224" xmlns="http://www.w3.org/2000/svg"
+    class="svg-star active" name="star-1">
+    <rect xmlns="http://www.w3.org/2000/svg" x="0.5" y="0.5" width="223" height="104" rx="52"
+        stroke="#D9D9D9" class="svg-elem-1"></rect>
+    <path xmlns="http://www.w3.org/2000/svg"
+        d="M116.5 12L117.835 30.9703C118.59 41.6939 127.321 50.1158 138.065 50.4834L197 52.5L138.065 54.5166C127.321 54.8842 118.59 63.3061 117.835 74.0297L116.5 93L115.165 74.0297C114.41 63.3061 105.679 54.8842 94.9347 54.5166L36 52.5L94.9347 50.4834C105.679 50.1158 114.41 41.6939 115.165 30.9703L116.5 12Z"
+        fill="#D9D9D9" class="svg-elem-2"></path>
+</svg>
