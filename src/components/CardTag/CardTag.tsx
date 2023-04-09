@@ -15,7 +15,7 @@ interface ICardTagProps {
   icon?: string;
 }
 
-const CardTag: React.FC<ICardTagProps> = ({ name, icon }) => {
+export const CardTag: React.FC<ICardTagProps> = ({ name, icon }) => {
   const nameTransformed = name.charAt(0).toUpperCase() + name.slice(1);
 
   return (

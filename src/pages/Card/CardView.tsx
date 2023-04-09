@@ -1,10 +1,10 @@
-import classNames from "classnames";
 import * as React from "react";
-import CARDS from "../../__mocks__/cards.json";
 import { useParams } from "react-router-dom";
+import classNames from "classnames";
 
+import CARDS from "@/__mocks__/cards.json";
+import { CardTag } from "@/components";
 import "./CardView.scss";
-import CardTag from "../../components/CardTag/CardTag";
 
 interface ICardViewProps {}
 
@@ -15,10 +15,7 @@ const CardView: React.FC<ICardViewProps> = (props) => {
   const [card, setCard] = React.useState(CARDS.find((c) => c.id === id));
 
   return (
-    <div
-      className={classNames("card", { "_cover-header": true })}
-      style={{ paddingTop: "calc(105px + 2rem)" }}
-    >
+    <div className={classNames("card", { "_cover-header": true })} style={{ paddingTop: "calc(105px + 2rem)" }}>
       <div className="card__wrapper">
         <div className="card__img" style={{ visibility: "hidden" }}></div>
         <div>
@@ -33,10 +30,7 @@ const CardView: React.FC<ICardViewProps> = (props) => {
               </div>
             ))}
           </div>
-          <div
-            className="card__descriptions"
-            dangerouslySetInnerHTML={{ __html: card?.description ?? "" }}
-          />
+          <div className="card__descriptions" dangerouslySetInnerHTML={{ __html: card?.description ?? "" }} />
 
           <button className="spread__btn">
             <span>Read more</span>

@@ -1,11 +1,11 @@
 import * as React from "react";
-import LogoSvg from "../../assets/logo.svg";
+import LogoSvg from "@/assets/logo.svg";
 import { Link } from "react-router-dom";
 import "./Header.scss";
 
 interface IHeaderProps {}
 
-const Header: React.FC<IHeaderProps> = (props) => {
+export const Header: React.FC<IHeaderProps> = (props) => {
   return (
     <header className="header">
       <div className="header__wrapper">
