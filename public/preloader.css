@@ -1,6 +1,6 @@
 @font-face {
   font-family: Mirra;
-  src: url("@/fonts/Mirra/mirra.otf") format("opentype");
+  src: url("/fonts/Mirra/mirra.otf") format("opentype");
   font-style: normal;
   font-weight: 400;
   font-display: block;
@@ -31,26 +31,26 @@ body {
   font-size: 120px;
   color: white;
   pointer-events: none;
+}
 
-  &__background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: #00112f;
-    will-change: opacity;
-  }
+.app-preloader__background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #00112f;
+  will-change: opacity;
+}
 
-  &__content {
-    position: relative;
-    z-index: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    will-change: transform, opacity;
-    opacity: 0;
-    transform: translateY(75px);
-    animation: preloader-appear 0.85s ease-out 0.15s forwards;
-  }
+.app-preloader__content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  will-change: transform, opacity;
+  opacity: 0;
+  transform: translateY(75px);
+  animation: preloader-appear 0.85s ease-out 0.15s forwards;
 }
 
 @keyframes preloader-appear {

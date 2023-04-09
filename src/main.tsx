@@ -1,7 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App";
 import { BrowserRouter } from "react-router-dom";
+
+import App from "./App";
+import { StoreProvider } from "@/context/store";
 
 import "@/fonts/IBM_Plex_Sans/IBMPlexSans-Light.ttf";
 import "@/fonts/Inter/Inter-Light.ttf";
@@ -14,9 +16,11 @@ import "@/fonts/Mirra/mirra.otf";
 import "@/styles/global.scss";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
-  <React.StrictMode>
+  // <React.StrictMode>
+  <StoreProvider>
     <BrowserRouter>
       <App />
     </BrowserRouter>
-  </React.StrictMode>,
+  </StoreProvider>,
+  // </React.StrictMode>,
 );

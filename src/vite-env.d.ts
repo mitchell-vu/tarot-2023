@@ -13,3 +13,9 @@ export type RawCard = {
   financeKeywords: string;
   finance: string;
 };
+
+declare global {
+  interface Window {
+    appStartTime: Date;
+  }
+}

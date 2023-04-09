@@ -1,13 +1,14 @@
 import * as React from "react";
-import WelcomeView from "./HomeView";
+import HomeView from "./HomeView";
 import SpreadView from "./SpreadView";
+import { useStore } from "@/context/store";
 
 interface IHomePageProps {}
 
 export const HomePage: React.FC<IHomePageProps> = (props) => {
-  const [view, setView] = React.useState<"home" | "spread">("home");
+  const store = useStore();
 
-  return view === "home" ? <WelcomeView toggleView={() => setView("spread")} /> : <SpreadView />;
+  return store?.homeView === "home" ? <HomeView /> : <SpreadView />;
 };
 
 export default HomePage;

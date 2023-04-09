@@ -1,5 +1,5 @@
 <svg fill="none" viewBox="0 0 152 105" height="105" width="152" xmlns="http://www.w3.org/2000/svg"
-    class="svg-star active" name="star-3">
+    class="svg-star" name="star-3">
     <rect xmlns="http://www.w3.org/2000/svg" x="0.5" y="0.5" width="151" height="104" rx="52"
         stroke="#D9D9D9" class="svg-elem-1"></rect>
     <path xmlns="http://www.w3.org/2000/svg"

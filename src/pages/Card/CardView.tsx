@@ -5,6 +5,7 @@ import classNames from "classnames";
 import CARDS from "@/__mocks__/cards.json";
 import { CardTag } from "@/components";
 import "./CardView.scss";
+import { useStore } from "@/context/store";
 
 interface ICardViewProps {}
 
@@ -12,7 +13,8 @@ const CardView: React.FC<ICardViewProps> = (props) => {
   const { id } = useParams();
   if (!id) return null;
 
-  const [card, setCard] = React.useState(CARDS.find((c) => c.id === id));
+  const store = useStore();
+  const card = store?.getCards(id);
 
   return (
     <div className={classNames("card", { "_cover-header": true })} style={{ paddingTop: "calc(105px + 2rem)" }}>

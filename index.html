@@ -11,20 +11,28 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://tarot2023.ru/" />
   <meta property="og:site_name" content="New Year's Tarot Reading" />
+
+  <link rel="preload" href="/preloader.css" as="style" />
+  <link rel="stylesheet" href="/preloader.css" />
+
+  <script>
+    window.appStartTime = new Date();
+  </script>
 </head>
 
 <body>
-  <!-- <div id="app-preloader" class="app-preloader">
+  <div id="app-preloader" class="app-preloader">
     <div class="app-preloader__background"></div>
     <div class="app-preloader__content">0%</div>
-  </div> -->
+  </div>
+
   <div id="root"></div>
 
   <noscript>
     We're sorry but tarot doesn't work properly without JavaScript enabled. Please enable it to continue.
   </noscript>
 
-  <script type="module" src="/src/main.tsx"></script>
+  <script defer="defer" type="module" src="/src/main.tsx"></script>
 </body>
 
 </html>
