@@ -37,10 +37,10 @@
 }
 
 @font-face {
-  font-family: IBM_Plex_Sans;
-  src: url("@/fonts/IBM_Plex_Sans/IBMPlexSans-LightItalic.ttf") format("truetype");
+  font-family: Mulish;
+  src: url("@/fonts/Mulish/Mulish-Bold.ttf") format("truetype");
   font-style: normal;
-  font-weight: 300;
+  font-weight: 700;
   font-display: swap;
 }
 
@@ -215,4 +215,10 @@ h2 {
 h2 {
   font-size: 6rem;
   line-height: 6rem;
+}
+
+.card-line,
+.word {
+  opacity: 0;
+  transform: translateY(-1.5rem);
 }

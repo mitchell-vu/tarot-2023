@@ -11,7 +11,7 @@ import "@/fonts/Inter/Inter-SemiBold.ttf";
 import "@/fonts/Mulish/Mulish-Bold.ttf";
 import "@/fonts/Mulish/Mulish-Regular.ttf";
 import "@/fonts/Mulish/Mulish-Light.ttf";
-import "@/fonts/Mirra/mirra.otf";
+import "/fonts/Mirra/mirra.otf";
 
 import "@/styles/global.scss";
 

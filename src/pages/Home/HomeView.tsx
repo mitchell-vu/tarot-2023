@@ -23,22 +23,31 @@ const HomeView: React.FC<IHomeViewProps> = () => {
     star2: false,
     star3: false,
   });
-  const firstElement = React.useRef<HTMLElement>(null);
-  const secondElement = React.useRef<HTMLElement>(null);
   const mainBtn = React.useRef<HTMLButtonElement>(null);
+  const elements: React.RefObject<HTMLDivElement>[] = React.useMemo(
+    () =>
+      [...Array(4)].reduce((refArr, _, index) => {
+        refArr[index] = React.createRef<HTMLDivElement>();
+        return refArr;
+      }, []),
+    [],
+  );
 
   let timeline = gsap.timeline();
   let subtitleSplitType: any = null;
 
   React.useEffect(() => {
     setTimeout(() => {
-      // checkCoverHeader();
       if (subtitleElement.current) {
         subtitleSplitType = new SplitType(subtitleElement.current, { types: "words, lines" });
       }
 
       gsap.set(subtitleElement.current, { opacity: 1 });
     }, 300);
+
+    return () => {
+      timeline?.kill();
+    };
   }, []);
 
   React.useEffect(() => {
@@ -88,23 +97,66 @@ const HomeView: React.FC<IHomeViewProps> = () => {
     });
 
     timeline
-      .to(firstElement.current, {
-        opacity: 1,
-        y: 0,
-        ease: "sine.out",
-        stagger: 0.05,
-      })
       .to(
-        secondElement.current,
+        elements.map((ref) => ref?.current),
         {
           opacity: 1,
           y: 0,
           ease: "sine.out",
           stagger: 0.05,
         },
-        ">-0.7",
       )
       .to(mainBtn.current, { opacity: 1, ease: "sine.out" });
+  };
+
+  const beforeLeave = () => {
+    store?.setBlockBtn(true);
+
+    return new Promise((res) => {
+      timeline?.kill();
+
+      const element = subtitleElement.current;
+      const lines = element ? element.querySelectorAll(".line") : [];
+      const stars = document.querySelectorAll(".home__star");
+
+      timeline = gsap
+        .timeline({
+          onComplete() {
+            res({});
+          },
+        })
+        .timeScale(1.5);
+
+      timeline
+        .to(stars, { opacity: 0 })
+        .to(
+          elements.map((ref) => ref?.current),
+          {
+            opacity: 0,
+            y: -20,
+            delay: 0.05,
+            willChange: "transform, opacity",
+          },
+          "<",
+        )
+        .to(
+          lines,
+          {
+            opacity: 0,
+            y: -20,
+            stagger: 0.1,
+            delay: 0.15,
+            willChange: "transform, opacity",
+          },
+          "<",
+        )
+        .to(mainBtn.current, { opacity: 0, delay: 0.2 }, "<");
+    });
+  };
+
+  const buttonClickHandler = async () => {
+    await beforeLeave();
+    store?.setView("spread", "home");
   };
 
   return (
@@ -112,18 +164,18 @@ const HomeView: React.FC<IHomeViewProps> = () => {
       <div className="home__hero">
         <div className="home__title text-h0">
           <div className="home__title-wrapper">
-            <span ref={firstElement}>New  </span>
-            <span ref={secondElement}>Year's</span>
+            <span ref={elements[0]}>New  </span>
+            <span ref={elements[1]}>Year's</span>
             <div className="home__star">
               <Star1 className={classNames("svg-star", { active: svgAnimation.star1 })} />
             </div>
           </div>
           <div className="home__title-wrapper">
-            <span>Tarot</span>
+            <span ref={elements[2]}>Tarot</span>
             <div className="home__star">
               <Star2 className={classNames("svg-star", { active: svgAnimation.star2 })} />
             </div>
-            <span>Reading</span>
+            <span ref={elements[3]}>Reading</span>
             <div className="home__star">
               <Star3 className={classNames("svg-star", { active: svgAnimation.star3 })} />
             </div>
@@ -136,7 +188,12 @@ const HomeView: React.FC<IHomeViewProps> = () => {
           Water Rabbit deck that predicts the future!
         </p>
 
-        <button ref={mainBtn} onClick={() => store?.setView("spread", "home")} className="home__btn">
+        <button
+          ref={mainBtn}
+          onClick={buttonClickHandler}
+          className={classNames("home__btn", { _disabled: store?.isBlockBtn })}
+          disabled={store?.isBlockBtn}
+        >
           <span>Looking to 2023</span>
         </button>
       </div>
