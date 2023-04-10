@@ -1,15 +1,19 @@
-import * as THREE from "three";
 import { gsap } from "gsap";
 import { isMobile } from "react-device-detect";
+import * as THREE from "three";
 
 import { Assets } from "@/modules/Tarot/Assets";
-import { calcCameraSizes, delay, log } from "@/modules/Tarot/utils";
-import { FRUSTUM_SIZE, CLOUD_TEXTURE_PATH, STAR_TEXTURE_PATH } from "@/modules/Tarot/constants";
-import TarotBackground from "@/modules/Tarot/TarotBackground";
-import Points from "@/modules/Tarot/Points";
 import Cards from "@/modules/Tarot/Cards";
+import Points from "@/modules/Tarot/Points";
+import TarotBackground from "@/modules/Tarot/TarotBackground";
+import { CLOUD_TEXTURE_PATH, FRUSTUM_SIZE, STAR_TEXTURE_PATH } from "@/modules/Tarot/constants";
+import { calcCameraSizes, delay, log } from "@/modules/Tarot/utils";
 
-// App motion module including webgl background and cards models
+/**
+ * App motion module
+ * - WebGL background
+ * - Cards models
+ */
 class Tarot {
   preloadDone = false;
 
@@ -42,6 +46,9 @@ class Tarot {
 
   // ----------------------------------------------------------------
 
+  /**
+   * Preload cloud and star textures into Assets
+   */
   public preload() {
     return new Promise((resolve) => {
       const loadingManager = new THREE.LoadingManager();
@@ -179,6 +186,9 @@ class Tarot {
     this.renderer.render(this.scene2, this.camera2);
   }
 
+  /**
+   * Inialize background light motion on mousemove
+   */
   enableOnMousemoveBackgroundMotion() {
     const { element } = this.UI;
 

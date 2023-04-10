@@ -1,4 +1,5 @@
 import * as THREE from "three";
+
 import { Assets } from "@/modules/Tarot/Assets";
 import { FRUSTUM_SIZE } from "@/modules/Tarot/constants";
 
@@ -26,6 +27,7 @@ class Points {
       map: Assets.get("starTexture"),
       fog: false,
     });
+
     material.userData = {
       defaultOpacity: opacity,
     };

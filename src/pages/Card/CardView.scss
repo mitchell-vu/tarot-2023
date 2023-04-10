@@ -18,6 +18,7 @@
 .card .spread__btn {
   display: block;
   margin: 3rem auto 0 auto !important;
+  background: #000e27;
 }
 .card__wrapper {
   display: flex;
@@ -65,14 +66,14 @@
   }
 }
 .card__tags-tag {
-  //   opacity: 0;
+  opacity: 0;
 }
 .card__title {
   position: relative;
   top: 1.1rem;
   margin: 0 0 2rem 0;
   max-width: 65rem;
-  //   opacity: 0;
+  opacity: 0;
 }
 @media (max-width: 1024px) {
   .card__title {
@@ -88,8 +89,8 @@
   line-height: 2rem;
   text-transform: uppercase;
   margin-bottom: 2rem;
-  //   opacity: 0;
-  //   transform: translateY(-1.5rem);
+  opacity: 0;
+  transform: translateY(-1.5rem);
 }
 .card__subtitle-text {
   opacity: 0.3;
@@ -98,7 +99,7 @@
   max-width: 60rem;
   max-height: 18rem;
   overflow-y: auto;
-  //   opacity: 0;
+  opacity: 0;
 }
 @media (max-width: 1024px) {
   .card__descriptions {

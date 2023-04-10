@@ -1,6 +1,7 @@
 import * as React from "react";
-import LogoSvg from "@/assets/logo.svg";
 import { Link } from "react-router-dom";
+
+import LogoSvg from "@/assets/svg/logo.svg";
 import "./Header.scss";
 
 interface IHeaderProps {}

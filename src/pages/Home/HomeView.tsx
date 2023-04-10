@@ -4,11 +4,11 @@ import { gsap } from "gsap";
 import SplitType from "split-type";
 
 // @ts-ignore
-import { ReactComponent as Star1 } from "@/assets/star/1.svg";
+import { ReactComponent as Star1 } from "@/assets/svg/star/1.svg";
 // @ts-ignore
-import { ReactComponent as Star2 } from "@/assets/star/2.svg";
+import { ReactComponent as Star2 } from "@/assets/svg/star/2.svg";
 // @ts-ignore
-import { ReactComponent as Star3 } from "@/assets/star/3.svg";
+import { ReactComponent as Star3 } from "@/assets/svg/star/3.svg";
 import { useStore } from "@/context/store";
 
 import "./HomeView.scss";
@@ -37,13 +37,18 @@ const HomeView: React.FC<IHomeViewProps> = () => {
   let subtitleSplitType: any = null;
 
   React.useEffect(() => {
-    setTimeout(() => {
-      if (subtitleElement.current) {
-        subtitleSplitType = new SplitType(subtitleElement.current, { types: "words, lines" });
-      }
+    store?.setBlockBtn(false);
 
-      gsap.set(subtitleElement.current, { opacity: 1 });
-    }, 300);
+    new Promise<void>((resolve) => {
+      setTimeout(() => {
+        if (subtitleElement.current) {
+          subtitleSplitType = new SplitType(subtitleElement.current, { types: "words, lines" });
+        }
+        gsap.set(subtitleElement.current, { opacity: 1 });
+
+        resolve();
+      }, 300);
+    });
 
     return () => {
       timeline?.kill();

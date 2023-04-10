@@ -16,6 +16,10 @@ export const cameraSizes = {
   height: 0,
 };
 
+/**
+ * Save calculated camera sizes based on argument camera
+ * @param camera
+ */
 export const calcCameraSizes = (camera: THREE.PerspectiveCamera) => {
   const vFOV = THREE.MathUtils.degToRad(camera.fov); // convert vertical fov to radians
   const height = 2 * Math.tan(vFOV / 2) * camera.position.z; // visible height
